@@ -1,0 +1,70 @@
+h1, h2, h4 {
+    font-family: "Andale Mono", monospace;
+    color: #E63447;
+}
+
+h4 {
+    text-decoration: overline #457A9C;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Keyframe animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+header {
+    padding: 20px 25px;
+    margin: -25px -25px 40px -25px;
+    background-color: #1C3658;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    padding: 25px;
+    background-color: #A7DADC;
+}
+
+p, ul, ol, li {
+    color: #1C3658;
+}
+
+#profile-pic {
+  border: 8px solid #457A9C;
+  border-style: ridge;
+  padding: 10px;
+  width: 300px;
+  height: 400px;
+}
+
+/* Apply fade-in animation to text elements only */
+p, h2, ul, ol, li, a {
+    animation: fadeIn 1.5s ease-in;
+}
+
+ul { list-style: none; } 
+
+ul li::before {
+  content: ">>";
+  margin-right: 8px;
+}
+
+br {
+  margin: 12px;
+}
+
+br.small {
+  margin: 8px;
+}
+
+br.xxsmall {
+  margin: 2px;
+}
