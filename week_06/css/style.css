@@ -44,17 +44,17 @@ header h1 {
 }
 
 /* Initial state for fly-in elements */
-.keypoints li {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.6s ease-out;
+.keypoints ul li, .keypoints ol li {
+    opacity: 0 !important;
+    transform: translateX(-50px) !important;
+    transition: all 0.6s ease-out !important;
     animation: none !important; /* Override any other animations */
 }
 
 /* Applied when element comes into view */
-.keypoints li.fly-in {
-    opacity: 1;
-    transform: translateX(0);
+.keypoints ul li.fly-in, .keypoints ol li.fly-in {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
 header {
@@ -103,8 +103,8 @@ p, h3, ul, ol, a {
     animation: fadeIn 2.5s ease-in;
 }
 
-/* Apply fade-in to regular li elements (not in keypoints) */
-li:not(.keypoints li) {
+/* Apply fade-in to all li elements by default */
+li {
     animation: fadeIn 2.5s ease-in;
 }
 

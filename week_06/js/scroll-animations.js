@@ -15,7 +15,7 @@ function initializeScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 // Add fly-in class to all li elements in the visible list
-                const listItems = entry.target.querySelectorAll('li');
+                const listItems = entry.target.querySelectorAll('ul li, ol li');
                 listItems.forEach((item, index) => {
                     // Add a small delay for each item to create staggered effect
                     setTimeout(() => {
@@ -49,7 +49,7 @@ function fallbackScrollAnimation() {
             
             if (isVisible && !list.classList.contains('animated')) {
                 list.classList.add('animated');
-                const listItems = list.querySelectorAll('li');
+                const listItems = list.querySelectorAll('ul li, ol li');
                 listItems.forEach((item, index) => {
                     setTimeout(() => {
                         item.classList.add('fly-in');
