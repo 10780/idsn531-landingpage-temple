@@ -1,0 +1,27 @@
+.topnav-menu {
+  overflow: hidden;
+  background-color: var(--secondary-color);
+}
+
+.topnav-menu a {
+  float: left;
+  display: block;
+  color: var(--contrast-txt-color);
+  text-align: center;
+  padding: 14px 42px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.topnav-menu a:hover {
+  background-color: var(--primary-color);
+  color: var(--contrast-txt-color);
+  text-decoration: underline var(--accent-color) 2px;
+}
+
+.topnav-menu a.active {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  text-decoration: underline var(--accent-color) 2px;
+}
