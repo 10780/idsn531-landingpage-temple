@@ -1,0 +1,700 @@
+:root {
+  --primary-color: #1C3658;
+  --secondary-color: #457A9C;
+  --tertiary-color-01: #A7DADC;
+  --tertiary-color-02: #D4F8F6;
+  --accent-color: #E63447;
+  --contrast-txt-color: #E7DFD3;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Andale Mono", monospace;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+h3, h4 {
+    text-decoration: overline var(--secondary-color);
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Keyframe animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframe animation for fly-in effect */
+@keyframes flyIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Initial state for fly-in elements */
+.keypoints ul li, .keypoints ol li {
+    opacity: 0 !important;
+    transform: translateX(-50px) !important;
+    transition: all 0.6s ease-out !important;
+    animation: none !important; /* Override any other animations */
+}
+
+/* Applied when element comes into view */
+.keypoints ul li.fly-in, .keypoints ol li.fly-in {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+header {
+    padding: 20px 25px;
+    margin: -25px -25px 40px -25px;
+    background-color: var(--primary-color);
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    padding: 25px;
+    background: var(--tertiary-color-01);
+    background: linear-gradient(180deg, var(--tertiary-color-01) 0%, var(--tertiary-color-02) 50%);
+}
+
+p, ul, ol, li {
+    text-align: justify;
+    margin: 0 0 15px 0;
+    color: var(--primary-color);
+}
+
+/* Link styles */
+a.outside-link {
+    text-decoration: none;
+    margin: 0 0 15px 0;
+}
+
+/* Image styles */
+#profile-pic {
+  border: 8px solid var(--secondary-color);
+  border-style: ridge;
+  float: left;
+  padding: 10px;
+  width: 300px;
+  height: 400px;
+}
+
+.project-gallery-pic {
+  border: 8px solid var(--secondary-color);
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Apply fade-in animation to text elements only */
+p, h3, ul, ol, a {
+    animation: fadeIn 2.5s ease-in;
+}
+
+/* Apply fade-in to all li elements by default */
+li {
+    animation: fadeIn 2.5s ease-in;
+}
+
+ul { list-style: none; } 
+
+ul li::before {
+  content: "\21E5";
+  margin-right: 8px;
+}
+
+/* Custom spacing for line breaks */
+br {
+  margin: 12px;
+}
+
+br.large {
+  margin: 16px;
+}
+
+br.xlarge {
+  margin: 24px;
+}
+
+br.small {
+  margin: 8px;
+}
+
+br.xxsmall {
+  margin: 2px;
+}
+
+/* Flexbox container styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  container-type: inline-size; /* Enable container queries */
+  container-name: main-container;
+}
+
+/* ===== CONTAINER QUERIES ===== */
+/* Modern component-based responsive design */
+
+@container main-container (max-width: 600px) {
+  .keypoints ul li,
+  .keypoints ol li {
+    font-size: 0.95em;
+    margin-bottom: 8px;
+  }
+  
+  .keypoints h4 {
+    font-size: 1.1em;
+  }
+}
+
+@container main-container (max-width: 400px) {
+  .keypoints ul li,
+  .keypoints ol li {
+    font-size: 0.9em;
+    margin-bottom: 6px;
+  }
+  
+  .keypoints {
+    padding: 15px 10px;
+  }
+}
+
+@container main-container (max-width: 300px) {
+  .keypoints ul li::before {
+    margin-right: 4px;
+  }
+  
+  .keypoints ul li,
+  .keypoints ol li {
+    font-size: 0.85em;
+    line-height: 1.3;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Large Desktop (1200px+) - Default styles above apply */
+
+/* ===== FEATURE-BASED MEDIA QUERIES ===== */
+
+/* High DPI/Retina Display Optimization */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi),
+       screen and (min-resolution: 2dppx) {
+  #profile-pic,
+  .project-gallery-pic {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Sharper borders on high-DPI displays */
+  #profile-pic {
+    border-width: 4px; /* Thinner on retina */
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .topnav-menu a {
+    padding: 16px 20px; /* Larger touch targets */
+    min-height: 44px; /* iOS recommended minimum */
+  }
+  
+  form input[type="submit"] {
+    min-height: 44px;
+    padding: 14px 20px;
+  }
+  
+  /* Disable hover effects on touch devices */
+  .topnav-menu a:hover {
+    background-color: var(--secondary-color);
+    text-decoration: none;
+  }
+}
+
+/* Mouse/Trackpad Device Enhancements */
+@media (hover: hover) and (pointer: fine) {
+  .topnav-menu a {
+    transition: all 0.3s ease;
+  }
+  
+  .topnav-menu a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  form input[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .keypoints ul li, .keypoints ol li {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Dark Mode Preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #E7DFD3;
+    --secondary-color: #A7DADC;
+    --tertiary-color-01: #1C3658;
+    --tertiary-color-02: #0F1D2E;
+    --accent-color: #FF6B7A;
+    --contrast-txt-color: #1C3658;
+  }
+  
+  body {
+    background: var(--tertiary-color-01);
+    background: linear-gradient(180deg, var(--tertiary-color-01) 0%, var(--tertiary-color-02) 50%);
+    color: var(--primary-color);
+  }
+  
+  p, ul, ol, li {
+    color: var(--primary-color);
+  }
+}
+
+/* Print Styles */
+@media print {
+  header nav,
+  footer,
+  .topnav-menu {
+    display: none;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3, h4 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+  
+  #profile-pic,
+  .project-gallery-pic {
+    max-width: 200px;
+    border: 1px solid black;
+  }
+  
+  a.outside-link::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+  }
+}
+
+/* Desktop/Laptop (992px - 1199px) */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  #profile-pic {
+    max-width: 280px;
+    height: 350px;
+  }
+}
+
+/* ===== ORIENTATION-BASED MEDIA QUERIES ===== */
+
+/* Landscape Orientation on Mobile/Tablet */
+@media screen and (max-width: 991px) and (orientation: landscape) {
+  header {
+    padding: 10px 15px;
+    margin: -15px -15px 20px -15px;
+  }
+  
+  #profile-pic {
+    float: left;
+    max-width: 200px;
+    margin: 0 20px 15px 0;
+  }
+  
+  .project-gallery-pic {
+    max-width: 250px;
+    float: right;
+    margin: 0 0 15px 20px;
+  }
+  
+  /* Compact navigation for landscape */
+  .topnav-menu a {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  /* Reduce vertical spacing in landscape */
+  br.large, br.xlarge {
+    margin: 8px;
+  }
+}
+
+/* Portrait Orientation Specific */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  #profile-pic {
+    display: block;
+    margin: 0 auto 20px auto;
+    float: none;
+  }
+  
+  .project-gallery-pic {
+    display: block;
+    margin: 15px auto;
+    float: none;
+  }
+}
+
+/* Very Small Landscape (phones in landscape) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  body {
+    padding: 8px;
+  }
+  
+  header {
+    padding: 8px;
+    margin: -8px -8px 15px -8px;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin: 5px 0;
+  }
+  
+  h2 {
+    font-size: 1.3em;
+  }
+  
+  .topnav-menu a {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  /* Minimal spacing for landscape phones */
+  br.large, br.xlarge {
+    margin: 5px;
+  }
+  
+  br.small {
+    margin: 3px;
+  }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  body {
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  #profile-pic {
+    float: none;
+    display: block;
+    margin: 0 auto 25px auto;
+    max-width: 260px;
+    height: auto;
+  }
+  
+  .project-gallery-pic {
+    max-width: 350px;
+  }
+  
+  /* Slightly reduce spacing on tablets */
+  br.xlarge {
+    margin: 20px;
+  }
+}
+
+/* Tablet Portrait & Large Mobile (576px - 767px) */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  body {
+    padding: 18px;
+  }
+  
+  header {
+    padding: 18px 18px;
+    margin: -18px -18px 32px -18px;
+  }
+  
+  .container {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0 12px;
+  }
+  
+  #profile-pic {
+    float: none;
+    display: block;
+    margin: 0 auto 22px auto;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+  }
+  
+  .project-gallery-pic {
+    max-width: 100%;
+    margin: 18px auto;
+  }
+  
+  /* Moderate spacing reduction */
+  br.large {
+    margin: 14px;
+  }
+  
+  br.xlarge {
+    margin: 18px;
+  }
+  
+  /* Improve readability on medium screens */
+  p, ul, ol, li {
+    text-align: left;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 1.7em;
+  }
+  
+  h3 {
+    font-size: 1.4em;
+  }
+}
+
+/* Mobile Landscape & Small Tablets (480px - 575px) */
+@media screen and (min-width: 480px) and (max-width: 575px) {
+  body {
+    padding: 15px;
+  }
+  
+  header {
+    padding: 15px 15px;
+    margin: -15px -15px 28px -15px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+  #profile-pic {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-width: 6px;
+    padding: 8px;
+  }
+  
+  .project-gallery-pic {
+    max-width: 100%;
+    margin: 15px auto;
+    border-width: 6px;
+  }
+  
+  /* Reduce spacing for smaller screens */
+  br.large {
+    margin: 12px;
+  }
+  
+  br.xlarge {
+    margin: 16px;
+  }
+  
+  /* Optimize typography */
+  p, ul, ol, li {
+    text-align: left;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 1.9em;
+  }
+  
+  h2 {
+    font-size: 1.6em;
+  }
+  
+  h3 {
+    font-size: 1.35em;
+  }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media screen and (min-width: 320px) and (max-width: 479px) {
+  body {
+    padding: 12px;
+  }
+  
+  header {
+    padding: 12px 12px;
+    margin: -12px -12px 24px -12px;
+  }
+  
+  .container {
+    padding: 0 8px;
+  }
+  
+  #profile-pic {
+    float: none;
+    display: block;
+    margin: 0 auto 18px auto;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-width: 4px;
+    padding: 6px;
+  }
+  
+  .project-gallery-pic {
+    max-width: 100%;
+    margin: 12px auto;
+    border-width: 4px;
+  }
+  
+  /* Minimal spacing for small screens */
+  br.large, br.xlarge {
+    margin: 10px;
+  }
+  
+  br.small {
+    margin: 6px;
+  }
+  
+  br.xxsmall {
+    margin: 3px;
+  }
+  
+  /* Compact typography */
+  p, ul, ol, li {
+    text-align: left;
+    line-height: 1.4;
+    font-size: 0.95em;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  h3 {
+    font-size: 1.3em;
+  }
+  
+  h4 {
+    font-size: 1.2em;
+  }
+}
+
+/* Very Small Mobile (max 319px) */
+@media screen and (max-width: 319px) {
+  body {
+    padding: 10px;
+  }
+  
+  header {
+    padding: 10px 10px;
+    margin: -10px -10px 20px -10px;
+  }
+  
+  .container {
+    padding: 0 5px;
+  }
+  
+  #profile-pic {
+    max-width: 180px;
+    border-width: 3px;
+    padding: 4px;
+  }
+  
+  .project-gallery-pic {
+    border-width: 3px;
+    margin: 10px auto;
+  }
+  
+  /* Minimal spacing */
+  br.large, br.xlarge {
+    margin: 8px;
+  }
+  
+  br.small {
+    margin: 4px;
+  }
+  
+  /* Very compact typography */
+  p, ul, ol, li {
+    font-size: 0.9em;
+    line-height: 1.3;
+  }
+  
+  h1 {
+    font-size: 1.6em;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+  }
+  
+  h4 {
+    font-size: 1.1em;
+  }
+}

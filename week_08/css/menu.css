@@ -1,0 +1,219 @@
+.topnav-menu {
+  overflow: hidden;
+  background-color: var(--secondary-color);
+}
+
+.topnav-menu a {
+  float: left;
+  display: block;
+  color: var(--contrast-txt-color);
+  text-align: center;
+  padding: 14px 42px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.topnav-menu a:hover {
+  background-color: var(--primary-color);
+  color: var(--contrast-txt-color);
+  text-decoration: underline var(--accent-color) 2px;
+}
+
+.topnav-menu a.active {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  text-decoration: underline var(--accent-color) 2px;
+}
+
+/* ===== ADVANCED NAVIGATION MEDIA QUERIES ===== */
+
+/* High Resolution Display Navigation */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .topnav-menu a {
+    border: 0.5px solid transparent; /* Sharper borders on retina */
+  }
+}
+
+/* Reduced Motion Navigation */
+@media (prefers-reduced-motion: reduce) {
+  .topnav-menu a {
+    transition: none !important;
+  }
+}
+
+/* Touch Device Navigation */
+@media (hover: none) and (pointer: coarse) {
+  .topnav-menu a {
+    min-height: 44px; /* iOS touch target minimum */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Remove hover effects on touch */
+  .topnav-menu a:hover {
+    background-color: var(--secondary-color);
+    transform: none;
+  }
+}
+
+/* Mouse Device Navigation Enhancements */
+@media (hover: hover) and (pointer: fine) {
+  .topnav-menu a {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .topnav-menu a:hover {
+    transform: translateY(-2px);
+  }
+  
+  .topnav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .topnav-menu a:hover::after {
+    width: 80%;
+  }
+}
+
+/* Landscape Mobile Navigation */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .topnav-menu {
+    padding: 5px 0;
+  }
+  
+  .topnav-menu a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Very Wide Screen Navigation (Ultra-wide monitors) */
+@media screen and (min-width: 1600px) {
+  .topnav-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .topnav-menu a {
+    padding: 16px 50px;
+    font-size: 18px;
+  }
+}
+
+/* ===== NAVIGATION RESPONSIVE BREAKPOINTS ===== */
+
+/* Desktop/Laptop (992px - 1199px) */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .topnav-menu a {
+    padding: 14px 36px;
+  }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .topnav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .topnav-menu a {
+    float: none;
+    padding: 14px 28px;
+    font-size: 15px;
+    flex: 1;
+    min-width: 90px;
+  }
+}
+
+/* Tablet Portrait & Large Mobile (576px - 767px) */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .topnav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .topnav-menu a {
+    float: none;
+    padding: 12px 22px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 85px;
+  }
+}
+
+/* Mobile Landscape & Small Tablets (480px - 575px) */
+@media screen and (min-width: 480px) and (max-width: 575px) {
+  .topnav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .topnav-menu a {
+    float: none;
+    padding: 12px 18px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 75px;
+  }
+  
+  .navbar {
+    gap: 8px;
+  }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media screen and (min-width: 320px) and (max-width: 479px) {
+  .topnav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .topnav-menu a {
+    float: none;
+    padding: 10px 14px;
+    font-size: 13px;
+    flex: 1;
+    min-width: 65px;
+  }
+  
+  .navbar {
+    gap: 6px;
+  }
+}
+
+/* Very Small Mobile (max 319px) */
+@media screen and (max-width: 319px) {
+  .topnav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .topnav-menu a {
+    float: none;
+    padding: 8px 12px;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+  
+  .navbar {
+    gap: 4px;
+  }
+}
